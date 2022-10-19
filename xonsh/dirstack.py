@@ -408,8 +408,8 @@ def popd_fn(
         BACKWARD = "-"
         FORWARD = "+"
     else:
-        BACKWARD = "-"
-        FORWARD = "+"
+        BACKWARD = "+"
+        FORWARD = "-"
 
     new_pwd: tp.Optional[str] = None
     if nth is None:

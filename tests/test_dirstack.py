@@ -109,3 +109,20 @@ def test_cd_autopush(xession, tmpdir):
             dirstack.popd([])
 
     assert old_dir == os.getcwd()
+    
+
+def test_popd_fn(xession):
+    from xonsh import environ
+    from xonsh.environ import Var
+    PUSHD_MINUS = Var.with_default(
+        True,
+    )
+    xession.env.update(dict(CDPATH=PARENT, PWD=HERE))
+    with chdir(HERE):
+        tests = os.path.join(HERE, "tests")
+        xpack = os.path.join(tests, "xpack")
+        dirstack.cd(["tests"])
+        dirstack.pushd(xpack)
+        dirstack.popd("-0")
+        assert dirstack.DIRSTACK.pop == xpack
+        

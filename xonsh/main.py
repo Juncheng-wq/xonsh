@@ -407,6 +407,7 @@ def premain(argv=None):
     env = start_services(shell_kwargs, args, pre_env=pre_env)
     if args.defines is not None:
         env.update([x.split("=", 1) for x in args.defines])
+        
     return args
 
 
